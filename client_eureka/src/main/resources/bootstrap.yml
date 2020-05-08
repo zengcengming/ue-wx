@@ -1,0 +1,12 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: client
+  cloud:
+    config:
+      enabled: true
+      discovery:
+        service-id: config
+      profile: dev

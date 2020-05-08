@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.servce.servce_eureka.dao.TAcTokenMapper">
+  <resultMap id="BaseResultMap" type="com.servce.servce_eureka.model.TAcToken">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="ac_token_id" jdbcType="VARCHAR" property="acTokenId" />
+    <result column="ac_user_id" jdbcType="VARCHAR" property="acUserId" />
+    <result column="token_value" jdbcType="VARCHAR" property="tokenValue" />
+    <result column="login_time" jdbcType="TIMESTAMP" property="loginTime" />
+    <result column="login_ip" jdbcType="VARCHAR" property="loginIp" />
+    <result column="os_type" jdbcType="VARCHAR" property="osType" />
+    <result column="os_version" jdbcType="VARCHAR" property="osVersion" />
+    <result column="device_version" jdbcType="VARCHAR" property="deviceVersion" />
+    <result column="device_sn" jdbcType="VARCHAR" property="deviceSn" />
+    <result column="app_version" jdbcType="VARCHAR" property="appVersion" />
+    <result column="expiry_time" jdbcType="TIMESTAMP" property="expiryTime" />
+  </resultMap>
+</mapper>
