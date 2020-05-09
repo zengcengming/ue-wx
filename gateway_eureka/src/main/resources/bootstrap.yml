@@ -1,0 +1,16 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: gateway
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: config
+      profile: dev
+zuul:
+  routes:
+    myClient:
+      path: /myClient/**
+      serviceId: client

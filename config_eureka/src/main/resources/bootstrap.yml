@@ -13,4 +13,14 @@ spring:
           uri: https://github.com/zengcengming/zcm.git
           username: 958846391@qq.com
           password: zeng15070234507
-#          basedir: D:\work\file\juejinDome\cloudTest\configBasedir 文件存储地址
+          basedir: D:\ideaProject\test\uw-wxConfig #文件存储地址
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: "*"

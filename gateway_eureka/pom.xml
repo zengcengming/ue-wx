@@ -6,13 +6,12 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.2.2.RELEASE</version>
-        <relativePath></relativePath>
+        <relativePath/> <!-- lookup parent from repository -->
     </parent>
-
-    <groupId>com.client</groupId>
-    <artifactId>client_eureka</artifactId>
+    <groupId>com.gateway</groupId>
+    <artifactId>gateway_eureka</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>client_eureka</name>
+    <name>gateway_eureka</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -23,25 +22,12 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
         </dependency>
 
-        <!--rabbitmq-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-bus-amqp</artifactId>
-        </dependency>
-
-        <!--配置中心客户端包-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-config-client</artifactId>
-        </dependency>
-
-        <!--负载均衡包引入-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
+            <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
         </dependency>
 
         <dependency>
