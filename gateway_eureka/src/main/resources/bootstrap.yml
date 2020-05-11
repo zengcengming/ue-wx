@@ -3,14 +3,28 @@ server:
 spring:
   application:
     name: gateway
+  rabbitmq:
+      host: localhost
+      port: 5672
+      username: guest
+      password: guest
   cloud:
     config:
       discovery:
         enabled: true
         service-id: config
       profile: dev
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
 zuul:
   routes:
     myClient:
       path: /myClient/**
       serviceId: client
+      # 设置可以传递请求头
+      sensitiveHeaders:
+  ignored-patterns:
+      - /**/getServerResult

@@ -18,13 +18,13 @@ public class ClientController {
    /* @Autowired
     private RestTemplate restTemplate;*/
 
-    @Value("${env}")
+   /* @Value("${env}")
     private String env;
 
     @GetMapping("/printEnv")
     public String printEnv(){
         return env;
-    }
+    }*/
 
     @GetMapping("/getServerResult")
     public String getServerResult(){
