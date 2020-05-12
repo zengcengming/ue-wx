@@ -3,15 +3,93 @@ server:
 
 spring:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/world?useUnicode=true&characterEncoding=UTF-8&serverTimezone=CTT&allowMultiQueries=true
-    username: root
-    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/world?useUnicode=true&characterEncoding=UTF-8&serverTimezone=CTT&allowMultiQueries=true
+      username: root
+      password: 123456
+      # 初始化大小，最小，最大
+      initial-size: 5
+      min-idle: 5
+      max-active: 20
+      # 配置获取连接等待超时的时间
+      max-wait: 60000
+      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      time-between-eviction-runs-millis: 60000
+      # 配置一个连接在池中最小生存的时间，单位是毫秒
+      min-evictable-idle-time-millis: 300000
+      #检测连接是否有效的sql
+      validation-query: SELECT 'x'
+      validation-query-timeout: 60000
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      #是否缓存preparedStatement,mysql5.5+建议开启
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      #配置扩展插件
+      filters: stat,wall
+      #通过connectProperties属性来打开mergeSql功能；慢SQL记录
+      connect-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+      #合并多个DruidDataSource的监控数据
+      use-global-data-source-stat: true
+      stat-view-servlet:
+        login-username: admin
+        login-password: admin
+        reset-enable: false
+        url-pattern: /druid/*
+        # 添加IP白名单
+        #allow:
+        # 添加IP黑名单，当白名单和黑名单重复时，黑名单优先级更高
+        #deny:
+      web-stat-filter:
+        # 添加过滤规则
+        url-pattern: /*
+        # 忽略过滤格式
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
   application:
       name: servce
 eureka:
  client:
   service-url:
    defaultZone: http://localhost:8761/eureka/
+
+# JWT 配置
+jwt:
+  # 存放Token的Header Key
+  header: Authorization
+  # 密匙key
+  secret: mySecret
+  # 过期时间   单位秒 7天后过期  604800
+  expiration: 3600
+  # 自定义token 前缀字符
+  tokenHead: Bearer-
+  # 超时时间   单位秒
+  access_token: 3600
+  # 刷新token时间   单位秒
+  refresh_token: 3600
+  route:
+    authentication:
+      path: login/entry
+      refresh: oauth/refresh
+      register: login/account
+
+# 配置不需要认证的接口
+com:
+  example:
+    oauth:
+      security:
+        antMatchers:
+          /auth/v1/api/login/**,
+          /auth/v1/api/module/tree/**,
+          /auth/v1/api/grid/**
+
+# 日志
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
 
 

@@ -18,9 +18,9 @@ import static com.servce.servce_eureka.core.ProjectConstant.*;
  */
 public class CodeGenerator {
     //JDBC配置，请修改为你项目的实际配置
-    private static final String JDBC_URL = "jdbc:mysql://47.96.151.74:3306/youone_db?useUnicode=true&characterEncoding=UTF-8&serverTimezone=CTT";
-    private static final String JDBC_USERNAME = "youone";
-    private static final String JDBC_PASSWORD = "6MkD9W@yxf";
+    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/world?useUnicode=true&characterEncoding=UTF-8&serverTimezone=CTT";
+    private static final String JDBC_USERNAME = "root";
+    private static final String JDBC_PASSWORD = "123456";
 
     private static final String JDBC_DIVER_CLASS_NAME = "com.mysql.cj.jdbc.Driver";
 
@@ -38,7 +38,7 @@ public class CodeGenerator {
     private static final String DATE = new SimpleDateFormat("yyyy/MM/dd").format(new Date());//@date
 
     public static void main(String[] args) {
-        //genCode("t_ac_token");
+        //genCode("user_roles");
         //genCodeByCustomModelName("输入表名","输入自定义Model名称");
     }
 
